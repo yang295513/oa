@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qs304.oa.dao.NewLabelDao">
+    <select id="selectAllNewLabel" resultType="cn.qs304.oa.beans.NewLabel">
+        select * from newlabel
+    </select>
+
+    <select id="selectAllNewLabelTitle" resultType="cn.qs304.oa.beans.NewLabel">
+        select label_name,id from newlabel where pid is null
+    </select>
+
+    <select id="selectAllNewByPid" resultType="cn.qs304.oa.beans.NewLabel">
+        select * from newlabel where pid = #{pid}
+    </select>
+
+    <select id="selectNewsById" resultType="cn.qs304.oa.beans.NewLabel">
+        select * from newlabel where id = #{id}
+    </select>
+    <insert id="insertNewLabel" parameterType="cn.qs304.oa.beans.NewLabel">
+        insert into newlabel(label_name,label_content,pid) values(#{label_name},#{label_content},#{pid})
+    </insert>
+    <delete id="deleteNewLabelById" parameterType="Integer">
+        delete from newlabel where id = #{id}
+    </delete>
+
+    <delete id="updateNewLabelById" parameterType="cn.qs304.oa.beans.NewLabel">
+        update newlabel set label_name = #{label_name},label_content = #{label_content},pid = #{pid} where id = #{id}
+    </delete>
+</mapper>
